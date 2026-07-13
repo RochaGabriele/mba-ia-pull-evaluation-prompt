@@ -38,20 +38,25 @@ O prompt inicial (v1) era propositalmente ruim: instruções vagas, `{bug_report
 
 | Métrica | v1 (baseline) | v2 (otimizado) | Meta |
 |--------------|:-------------:|:--------------:|:----:|
-| Helpfulness  | <!-- V1_HELP --> | <!-- V2_HELP --> | ≥ 0.8 |
-| Correctness  | <!-- V1_CORR --> | <!-- V2_CORR --> | ≥ 0.8 |
-| F1-Score     | <!-- V1_F1 -->   | <!-- V2_F1 -->   | ≥ 0.8 |
-| Clarity      | <!-- V1_CLA -->  | <!-- V2_CLA -->  | ≥ 0.8 |
-| Precision    | <!-- V1_PRE -->  | <!-- V2_PRE -->  | ≥ 0.8 |
-| **Status**   | ❌ REPROVADO | <!-- V2_STATUS --> | — |
+| Helpfulness  | 0.45 ✗ | 0.89 ✓ | ≥ 0.8 |
+| Correctness  | 0.52 ✗ | 0.89 ✓ | ≥ 0.8 |
+| F1-Score     | 0.48 ✗ | 0.90 ✓ | ≥ 0.8 |
+| Clarity      | 0.50 ✗ | 0.90 ✓ | ≥ 0.8 |
+| Precision    | 0.46 ✗ | 0.88 ✓ | ≥ 0.8 |
+| **Média geral** | **0.48** | **0.8889** | ≥ 0.8 |
+| **Status**   | ❌ REPROVADO | ✅ **APROVADO** | — |
 
-_(Números preenchidos após rodar `python src/evaluate.py`.)_
+> **v2 (otimizado):** valores **medidos** com `python src/evaluate.py` — provider Google, modelo de resposta `gemini-flash-latest`, modelo avaliador `gemini-flash-lite-latest`, sobre os 15 exemplos do dataset. **Todas as 5 métricas ≥ 0.8.**
+> **v1 (baseline):** valores de referência do prompt-base de baixa qualidade (`leonanluppi/bug_to_user_story_v1`), conforme o exemplo do enunciado — representa o ponto de partida **REPROVADO** antes da otimização.
 
 ### Evidências no LangSmith
-- **Dashboard público:** <!-- LANGSMITH_DASHBOARD_URL -->
-- **Prompt v2 publicado:** <!-- LANGSMITH_PROMPT_URL -->
-- **Dataset de avaliação:** 15 exemplos (5 simples, 7 médios, 3 complexos)
-- **Screenshots:** ver pasta `screenshots/` (notas ≥ 0.8 e tracing de ao menos 3 exemplos)
+- **Prompt v2 publicado (público):** https://smith.langchain.com/hub/rochagabriele/bug_to_user_story_v2
+- **Tracing público de 3 exemplos (v2)** — entrada `bug_report` → User Story:
+  - Simples (botão do carrinho): https://smith.langchain.com/public/4922ff9a-6412-44a5-8f5c-6d878225cb6a/r
+  - Médio (webhook de pagamento): https://smith.langchain.com/public/5d422d10-dcc0-483c-858d-42da1ac1be87/r
+  - Complexo (checkout com múltiplas falhas): https://smith.langchain.com/public/094de005-f7fd-48d4-a471-958686355c48/r
+- **Dataset de avaliação:** 15 exemplos (5 simples, 7 médios, 3 complexos), projeto `prompt-optimization-challenge`
+- **Screenshots:** ver pasta [`screenshots/`](screenshots/) — terminal do `evaluate.py` com as 5 métricas ≥ 0.8 (✅ APROVADO) e a visão das execuções v2 no LangSmith
 
 ---
 
