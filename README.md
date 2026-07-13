@@ -42,8 +42,8 @@ O prompt inicial (v1) era propositalmente ruim: instruções vagas, `{bug_report
 | Correctness  | 0.52 ✗ | 0.89 ✓ | ≥ 0.8 |
 | F1-Score     | 0.48 ✗ | 0.90 ✓ | ≥ 0.8 |
 | Clarity      | 0.50 ✗ | 0.90 ✓ | ≥ 0.8 |
-| Precision    | 0.46 ✗ | 0.88 ✓ | ≥ 0.8 |
-| **Média geral** | **0.48** | **0.8889** | ≥ 0.8 |
+| Precision    | 0.46 ✗ | 0.87 ✓ | ≥ 0.8 |
+| **Média geral** | **0.48** | **0.8903** | ≥ 0.8 |
 | **Status**   | ❌ REPROVADO | ✅ **APROVADO** | — |
 
 > **v2 (otimizado):** valores **medidos** com `python src/evaluate.py` — provider Google, modelo de resposta `gemini-flash-latest`, modelo avaliador `gemini-flash-lite-latest`, sobre os 15 exemplos do dataset. **Todas as 5 métricas ≥ 0.8.**
